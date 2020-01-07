@@ -3,11 +3,11 @@ import { SocketConnection } from './socket_connection/SocketConnection';
 
 export class ChatExample {
     private static sockets: Map<string, Socket | undefined>;
-    public static initialize() {
+    public static initialize(): void {
         ChatExample.sockets = new Map();
         setInterval(ChatExample.update, 100);
     }
-    private static update() {
+    private static update(): void { // add new sockets, remove old sockets
         for (const sessID of SocketConnection.sockets.keys()) {
             if (!ChatExample.sockets.get(sessID)) {
                 ChatExample.sockets.set(sessID, SocketConnection.sockets.get(sessID));

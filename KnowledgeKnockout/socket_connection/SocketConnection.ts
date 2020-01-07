@@ -4,7 +4,7 @@ import * as socketio from 'socket.io';
 export class SocketConnection {
     public static sockets: Map<string, socketio.Socket>; // Map<sessionID, socket>
     private static io: socketio.Server;
-    public static initialize(server: Server) {
+    public static initialize(server: Server): void {
         SocketConnection.io = socketio(server);
         SocketConnection.sockets = new Map();
         SocketConnection.io.on('connection', socket => {

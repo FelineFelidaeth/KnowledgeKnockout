@@ -3,10 +3,10 @@ import { BCrypt } from './BCrypt';
 import { User } from './User';
 
 export class Authentication {
-    public static async register(email: string, password: string) {
+    public static async register(email: string, password: string): Promise<void> {
         if (!await Authentication.userExists(email)) MySQL.query('INSERT INTO users (email, password, ...) VALUES (?, ?, ...)', [email, password/*, ...*/]);
     }
-    public static async login(email: string, password: string) {
+    public static async login(email: string, password: string): Promise<User> {
         const result = await MySQL.query('SELECT email, password FROM users WHERE email=?', [email]);
         if (await BCrypt.match(password, result.password)) return new User(email/*, ...*/);
         else return new User();

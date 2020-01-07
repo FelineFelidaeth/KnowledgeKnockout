@@ -11,6 +11,8 @@ import { socketiotest_get_route } from './routes/socketiotest_get_route';
 import { SocketConnection } from './socket_connection/SocketConnection';
 import { User } from './users_example/User';
 import { Questions } from './questions/Questions';
+import { training_route_get, training_route_post } from './routes/training_route';
+import { MySQL } from './mysql/MySql';
 
 const app = express();
 
@@ -54,9 +56,8 @@ app.get('/socketiotest', socketiotest_get_route);
 
 app.get('/add-question', add_question_route_get).post('/add-question', add_question_route_post);
 
+app.get('/training', training_route_get).post('/training', training_route_post);
+
 app.get('*', any_route_get);
 
 ChatExample.initialize();
-
-
-Questions.test(4, 10).then(console.log);

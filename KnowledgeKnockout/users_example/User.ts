@@ -1,5 +1,5 @@
 export class User {
-    public constructor(email: string = '') {
+    public constructor(email: string = ''/*,...*/) {
 
     }
 }
