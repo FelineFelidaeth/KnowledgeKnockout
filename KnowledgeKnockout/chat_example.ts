@@ -8,11 +8,15 @@ export class ChatExample {
         setInterval(ChatExample.update, 100);
     }
     private static update() {
-        for (let sessID of SocketConnection.sockets.keys()) {
+        for (const sessID of SocketConnection.sockets.keys()) {
             if (!ChatExample.sockets.get(sessID)) {
                 ChatExample.sockets.set(sessID, SocketConnection.sockets.get(sessID));
                 ChatExample.sockets.get(sessID)?.on('chat', msg => ChatExample.sockets.forEach(socket => socket?.emit('chat', JSON.stringify({ msg, username: sessID }))));
             }
+        }
+
+        for (const sessID of ChatExample.sockets.keys()) {
+            if (!SocketConnection.sockets.get(sessID)) ChatExample.sockets.delete(sessID);
         }
     }
 }

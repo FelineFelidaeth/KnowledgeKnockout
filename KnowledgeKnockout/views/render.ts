@@ -16,9 +16,9 @@ export async function render(paths: string[], params: any) {
 
     ret = ret.replace(/<!\-\-.*\-\->/s, '').replace(/>\s*</g, '><').replace(/>(\S*)\s*(\S*)</g, '>$1 $2<');
 
-    let matches = [...new Set(ret.match(/#{\s*\w*\s*}/g))];
+    const matches = [...new Set(ret.match(/#{\s*\w*\s*}/g))];
 
-    for (let match of matches) ret = ret.replace(new RegExp(match, 'g'), params[match.replace(/[#|{|}|\s]*/g, '')]);
+    for (const match of matches) ret = ret.replace(new RegExp(match, 'g'), params[match.replace(/[#|{|}|\s]*/g, '')]);
 
     if (process.env.NODE_ENV === 'production') ret = ret.replace(/undefined/g, '');
 

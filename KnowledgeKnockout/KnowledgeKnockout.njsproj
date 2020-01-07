@@ -10,7 +10,7 @@ DB_HOST=localhost
 DB_PORT=3306
 DB_USER=KK_User
 DB_PASS=KK_Pwd
-DB_NAME=KK_DBName
+DB_NAME=KK_DB
 DB_SessionStoreName=KK_DBSessStore
 SESSION_SECRET=eaO1LJRfcOZEiXMs
 SESSIONID=sid</Environment>
@@ -41,6 +41,12 @@ SESSIONID=sid</Environment>
   <ItemGroup>
     <None Include="KnowledgeKnockout.ts" />
     <Content Include="package.json" />
+    <Content Include="public\js\add_question.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="public\js\modules\ajax.js">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="public\test.txt">
       <SubType>Code</SubType>
     </Content>
@@ -48,6 +54,10 @@ SESSIONID=sid</Environment>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="mysql\" />
+    <Folder Include="public\js\" />
+    <Folder Include="public\js\modules\" />
+    <Folder Include="questions\" />
+    <Folder Include="users_example\" />
     <Folder Include="socket_connection\" />
     <Folder Include="views\" />
     <Folder Include="public\" />
@@ -60,12 +70,13 @@ SESSIONID=sid</Environment>
     <TypeScriptCompile Include="helpers.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="Match.ts">
-      <SubType>Code</SubType>
-    </TypeScriptCompile>
     <TypeScriptCompile Include="mysql\MySql.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="questions\Questions.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="routes\add_question_route.ts" />
     <TypeScriptCompile Include="routes\any_route.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
@@ -79,6 +90,15 @@ SESSIONID=sid</Environment>
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="socket_connection\SocketConnection.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="users_example\Authentication.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="users_example\BCrypt.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="users_example\User.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="views\render.ts" />
