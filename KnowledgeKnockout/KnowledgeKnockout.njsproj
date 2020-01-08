@@ -95,6 +95,7 @@ SESSIONID=sid</Environment>
     <TypeScriptCompile Include="routes\index_route.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="routes\registry_route.ts" />
     <TypeScriptCompile Include="routes\socketiotest_get_route.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
