@@ -35,6 +35,21 @@ export class Authentication {
             return undefined;
         }
     }
+
+    public static async confirm_login(name: string): Promise<User | undefined> {
+        try {
+            const result = await MySQL.query('SELECT * FROM user WHERE name=?', [name]);
+            console.log(result);
+            if (!result[0].password) throw 'no password';
+
+            if (result.length !== 0) return new User(result[0].id, result[0].name, result[0].email, result[0].progress);
+        }
+        catch (error) {
+            console.error(error);
+            return undefined;
+        }
+    }
+
     public static async userExists(name: string, email: string): Promise<boolean> {
         try {
             const result = await MySQL.query('SELECT * FROM user WHERE name=? OR email=?', [name, email]);

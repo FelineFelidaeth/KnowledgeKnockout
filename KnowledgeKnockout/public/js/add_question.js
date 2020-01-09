@@ -9,6 +9,14 @@ const correctAnswer = document.getElementById('answer_04');
 const topicBlockSelect = document.getElementById('topicBlock');
 const topicSelect = document.getElementById('topic');
 const secondsInput = document.getElementById('secondsToAnswer');
+const resetForm = () => {
+    textArea.value = '';
+    wrongAnswer01.value = '';
+    wrongAnswer02.value = '';
+    wrongAnswer03.value = '';
+    correctAnswer.value = '';
+    secondsInput.value = '';
+};
 
 form.onsubmit = async e => {
     e.preventDefault();
@@ -60,18 +68,13 @@ form.onsubmit = async e => {
         const response = JSON.parse(await Ajax.post('/add-question', JSON.stringify(data), { 'Content-Type': 'application/json' }));
 
         if (response.success === true) {
-            let reset = confirm('Hat geklappt! Formular resetten?');
 
-            if (reset === true) {
-                textArea.value = '';
-                wrongAnswer01.value = '';
-                wrongAnswer02.value = '';
-                wrongAnswer03.value = '';
-                correctAnswer.value = '';
-                secondsInput.value = '';
-            } 
+            if (confirm('Hat geklappt! Formular resetten?')) resetForm();
+
         } else {
+
             throw response.error;
+
         }
     } catch (error) {
         alert(`Ein Fehler ist aufgetreten: ${error}`);
