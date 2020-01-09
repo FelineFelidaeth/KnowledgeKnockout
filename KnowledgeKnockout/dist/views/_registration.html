@@ -1,0 +1,73 @@
+﻿<!doctype html>
+<html lang="de-de">
+    <head>
+        <meta charset="utf-8" />
+        <title>Fragen hochladen</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            form {
+                padding: 2em;
+            }
+
+            textarea {
+                display: block;
+                width: 60vw;
+                height: 30vh;
+            }
+
+            label {
+                display: block;
+                margin: 0.5em 0 0 0;
+            }
+
+            input[type=text], input[type=number] {
+                display: block;
+                margin: 0 0 0.5em 0;
+            }
+
+            button {
+                padding: 0.3em;
+            }
+
+            .horizontal_layout {
+                width: 60vw;
+                display: flex;
+                justify-content: space-evenly;
+                align-items: stretch;
+                padding: 2em;
+            }
+
+        </style>
+    </head>
+    <body>
+        
+        <form id="registrationUploadForm">
+            <textarea id="registrationContent"></textarea>
+            <div class="horizontal_layout">
+
+                <div>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" />
+
+                    <label for="email">E-Mail:</label>
+                    <input type="text" id="email" />
+
+                    <label for="password">Password:</label>
+                    <input type="text" id="password" />
+
+                    <button type="submit">Abschicken!</button>
+                </div>
+            </div>
+
+        </form>
+
+        <script type="module" src="js/registration.js"></script>
+
+        
+    </body>
+</html>

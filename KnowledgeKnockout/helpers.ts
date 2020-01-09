@@ -1,5 +1,5 @@
 export const randStr = (length: number): string => [...Array(length)].map(i => (~~(Math.random() * 36)).toString(36)).join('');
-export const randomizeArray = (arr: any[]): any[] => {
+export const randomizeArray = <T>(arr: T[]): T[] => {
     let copy = arr.slice();
     let newArray = [];
     while (copy.length > 0) {

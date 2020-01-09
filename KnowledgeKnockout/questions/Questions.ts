@@ -13,10 +13,20 @@ export class Questions {
             return false;
         }
     }
-    public static async getQuestion(topicId: number): Promise<Question> {
+    public static async getRandomQuestion(topicId: number): Promise<Question> {
         try {
             const result = (await MySQL.query('SELECT * FROM question WHERE topicId=? ORDER BY RAND() LIMIT 1', [topicId]))[0];
-            return new Question(result.id, result.blockId, result.topicId, result.content, result.imgSrc);
+            return new Question(result.id, result.blockId, result.topicId, result.content, result.imgSrc, result.secondsToSolve);
+        }
+        catch (error) {
+            console.error(error);
+            return new Question();
+        }
+    }
+    public static async getQuestion(questionId: number): Promise<Question> {
+        try {
+            const result = (await MySQL.query('SELECT * FROM question WHERE id=?', [questionId]))[0];
+            return new Question(result.id, result.blockId, result.topicId, result.content, result.imgSrc, result.secondsToSolve);
         }
         catch (error) {
             console.error(error);
@@ -29,7 +39,7 @@ export class Questions {
             return randomizeArray(result.map((a: Answer) => new Answer(a.id, a.questionId, a.content, a.isCorrect, a.imgSrc)));
         }
         catch (error) {
-            console.log(error);
+            console.error(error);
             return [];
         }
     }

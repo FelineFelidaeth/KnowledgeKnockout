@@ -41,7 +41,22 @@ SESSIONID=sid</Environment>
   <ItemGroup>
     <None Include="KnowledgeKnockout.ts" />
     <Content Include="package.json" />
+    <Content Include="public\HMTL_CSS\css\loginStyle.css" />
+    <Content Include="public\HMTL_CSS\css\mainStyle.css" />
+    <Content Include="public\HMTL_CSS\css\quizStyle.css" />
+    <Content Include="public\HMTL_CSS\css\uebungStyle.css" />
+    <Content Include="public\HMTL_CSS\html\login.html" />
+    <Content Include="public\HMTL_CSS\html\main.html" />
+    <Content Include="public\HMTL_CSS\html\quiz.html" />
+    <Content Include="public\HMTL_CSS\html\registration.html" />
+    <Content Include="public\HMTL_CSS\html\uebung.html" />
     <Content Include="public\js\add_question.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="public\js\login.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="public\js\registration.js">
       <SubType>Code</SubType>
     </Content>
     <Content Include="public\js\modules\ajax.js">
@@ -57,10 +72,13 @@ SESSIONID=sid</Environment>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="mysql\" />
+    <Folder Include="public\HMTL_CSS\" />
+    <Folder Include="public\HMTL_CSS\css\" />
+    <Folder Include="public\HMTL_CSS\html\" />
+    <Folder Include="user\" />
     <Folder Include="public\js\" />
     <Folder Include="public\js\modules\" />
     <Folder Include="questions\" />
-    <Folder Include="users_example\" />
     <Folder Include="socket_connection\" />
     <Folder Include="views\" />
     <Folder Include="public\" />
@@ -89,13 +107,16 @@ SESSIONID=sid</Environment>
     <TypeScriptCompile Include="routes\any_route.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="routes\example_route.ts">
-      <SubType>Code</SubType>
-    </TypeScriptCompile>
     <TypeScriptCompile Include="routes\index_route.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="routes\registry_route.ts" />
+    <TypeScriptCompile Include="routes\login_route.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="routes\logout_route.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="routes\registration_route.ts" />
     <TypeScriptCompile Include="routes\socketiotest_get_route.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
@@ -105,13 +126,16 @@ SESSIONID=sid</Environment>
     <TypeScriptCompile Include="socket_connection\SocketConnection.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="users_example\Authentication.ts">
+    <TypeScriptCompile Include="user\Authentication.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="users_example\BCrypt.ts">
+    <TypeScriptCompile Include="user\Avatar.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
-    <TypeScriptCompile Include="users_example\User.ts">
+    <TypeScriptCompile Include="user\BCrypt.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="user\User.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="views\render.ts" />

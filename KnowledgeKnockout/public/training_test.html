@@ -20,27 +20,32 @@
     <input type="button" id="requestQuestion" value="request question" />
 
     <div id="questionContainer" style="display: none">
-        <p id="question">egerd</p>
+        <p id="question"></p>
 
         <fieldset>
-            <input type="radio" id="q0" name="answer" value="0">
-            <label for="q0" id="q0Label"></label>
-            <input type="radio" id="q1" name="answer" value="1">
-            <label for="q1" id="q1Label"></label>
-            <input type="radio" id="q2" name="answer" value="2">
-            <label for="q2" id="q2Label"></label>
-            <input type="radio" id="q3" name="answer" value="3">
-            <label for="q3" id="q3Label"></label>
+            <div>
+                <input type="radio" id="q0" name="answer" value="0">
+                <label for="q0" id="q0Label"></label>
+            </div>
+            <div>
+                <input type="radio" id="q1" name="answer" value="1">
+                <label for="q1" id="q1Label"></label>
+            </div>
+            <div>
+                <input type="radio" id="q2" name="answer" value="2">
+                <label for="q2" id="q2Label"></label>
+            </div>
+            <div>
+                <input type="radio" id="q3" name="answer" value="3">
+                <label for="q3" id="q3Label"></label>
+            </div>
         </fieldset>
 
         <input type="button" id="submit" value="submit" />
-
     </div>
-
 
     <script>
         let q;
-
 
         const q0 = document.getElementById('q0');
         const q1 = document.getElementById('q1');
@@ -51,16 +56,6 @@
         const q1Label = document.getElementById('q1Label');
         const q2Label = document.getElementById('q2Label');
         const q3Label = document.getElementById('q3Label');
-
-
-
-
-
-
-
-
-
-
 
         async function testA(aId, qId) {
             let response = await fetch('/training', {
@@ -99,23 +94,15 @@
 
         document.getElementById('submit').addEventListener('click', async () => {
             let x;
-            console.log(q.qId);
-            if (q0.checked) {
-                x = await testA(q0.value, q.qId);
-            }
-            if (q1.checked) {
-                x = await testA(q1.value, q.qId);
-            }
-            if (q2.checked) {
-                x = await testA(q2.value, q.qId);
-            }
-            if (q3.checked) {
-                x = await testA(q3.value, q.qId);
-            }
 
+            if (q0.checked) x = await testA(q0.value, q.qId);
+            else if (q1.checked) x = await testA(q1.value, q.qId);
+            else if (q2.checked) x = await testA(q2.value, q.qId);
+            else if (q3.checked) x = await testA(q3.value, q.qId);
+
+            document.getElementById('questionContainer').style.display = 'none';
             alert(x ? 'correct answer' : 'wrong answer');
         });
-
 
     </script>
 </body>
