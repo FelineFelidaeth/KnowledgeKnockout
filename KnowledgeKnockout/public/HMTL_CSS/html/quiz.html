@@ -1,9 +1,48 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="../css/quizStyle.css">
     <meta charset="utf-8" />
-    <title>training test</title>
+    <title>Uebungsquiz</title>
+    <style>
+        body{
+	        display: flex ;
+            flex-direction: row;
+            justify-content: space-evenly ;
+	        align-items: center ;
+
+	        box-sizing: border-box ;
+	        height: 98.3vh ;
+
+            background-image: linear-gradient(to bottom right, darkgrey, silver , lightgrey);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        #questionContainer{
+	        box-sizing: border-box ;
+            height: 400px;
+            width: 85%;
+            text-align: center;
+            background-image: linear-gradient(to bottom left, MediumTurquoise, PaleTurquoise , MintCream);
+            border-radius: 20px;
+            border: 2px solid black;
+            color: midnightblue;
+        }
+
+        fieldset{
+            float: left;
+            margin-left: 25px;
+        }
+
+        h1{
+            font-size: 35px;
+            text-shadow: -2px 0 MistyRose, 0 2px mistyrose, 2px 0 mistyrose, 0 -2px mistyrose;
+        }
+
+        p{
+            font-size: 25px;
+        }
+    </style>
 </head>
 <body>
     <select id="topic">
@@ -21,16 +60,24 @@
 
     <div id="questionContainer" style="display: none">
         <p id="question"></p>
-        <form>
-            <input type="radio" name="answer" id="q0" value="0">
-            <label for="q0" id="q0Label"></label><br><br>
-            <input type="radio" name="answer" id="q0" value="1">
-            <label for="q1" id="q1Label"></label><br><br>
-            <input type="radio" name="answer" id="q0" value="2">
-            <label for="q2" id="q2Label"></label><br><br>
-            <input type="radio" name="answer" id="q0" value="3">
-            <label for="q3" id="q3Label"></label><br><br>
-        </form>
+        <fieldset>
+            <div>
+                <input type="radio" name="answer" id="q0" value="0">
+                <label for="q0" id="q0Label"></label><br><br>
+            </div>
+            <div>
+                <input type="radio" name="answer" id="q0" value="1">
+                <label for="q1" id="q1Label"></label><br><br>
+            </div>
+            <div>
+                <input type="radio" name="answer" id="q0" value="2">
+                <label for="q2" id="q2Label"></label><br><br>
+            </div>
+            <div>
+                <input type="radio" name="answer" id="q0" value="3">
+                <label for="q3" id="q3Label"></label><br><br>
+            </div>
+        </fieldset>
     </div>
     <input type="button" id="submit" value="submit" />
 
@@ -48,7 +95,7 @@
         const q3Label = document.getElementById('q3Label');
 
         async function testA(aId, qId) {
-            let response = await fetch('/training', {
+            let response = await fetch('/quiz', {
                 method: 'post',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                 body: `answer=${aId}&qId=${qId}`
@@ -59,7 +106,7 @@
 
         async function getQ(topic) {
             console.log('topic:', topic);
-            let response = await fetch('/training', {
+            let response = await fetch('/quiz', {
                 method: 'post',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                 body: 'topic=' + topic
