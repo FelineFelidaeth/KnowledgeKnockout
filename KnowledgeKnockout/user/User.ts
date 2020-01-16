@@ -16,7 +16,7 @@ export class User {
         this._email = email;
         this._progress = progress;
 
-        MySQL.query('SELECT * FROM avatar WHERE userId=?', [this._id]).then(result => result.forEach((avatar: any) => this.avatars.push(new Avatar(avatar.id, avatar.level, avatar.topicBlockId))));
+        MySQL.query('SELECT * FROM avatar WHERE userId=?', [this._id]).then(result => result.forEach((avatar: any) => this.avatars.push(new Avatar(avatar.id, avatar.level, avatar.topicId))));
     }
     public set name(val: string) {
         MySQL.query('UPDATE user SET name=? WHERE name=?', [val, this._name]);

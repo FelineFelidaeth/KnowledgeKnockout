@@ -4,9 +4,14 @@
     <input id="chat_chatin" type="text" />
     <input id="chat_send" type="button" value="send" />
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
-
     <script type="module">
+        // check if socketio script is loaded, if not load it
+        if (document.getElementsByTagName('script').every(script => script.src !== 'https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js')) {
+            const socketioScript = document.createElement('script');
+            socketioScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js';
+            document.body.appendChild(socketioScript);
+        }
+
         window.addEventListener('load', async () => {
             if (!window.socket) window.socket = io('/');
 

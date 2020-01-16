@@ -117,6 +117,9 @@
     <TypeScriptCompile Include="routes\any_route.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
+    <TypeScriptCompile Include="routes\userinfo_route.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
     <TypeScriptCompile Include="routes\index_route.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>

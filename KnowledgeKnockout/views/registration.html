@@ -3,8 +3,15 @@
 <head>
     <title> #{title} </title>
     <style>
+        html {
+            height: 100%;
+        }
+
         body {
             background-image: linear-gradient(to bottom right, teal, paleTurquoise, darkcyan);
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 75vh;
         }
 
         h1 {
@@ -14,12 +21,12 @@
         div {
             text-align: center;
             width: 20%;
-            height: 53%;
+            height: 70%;
             background-image: linear-gradient(to bottom left, mediumturquoise, black, mediumturquoise);
             border: 2px solid black;
             margin: 0 auto;
             margin-top: 10%;
-            border-radius: 15px;
+            border-radius: 20px;
             font-size: 24px;
             color: white;
         }
@@ -61,6 +68,7 @@
     </form>
 
     <script src="js/registration.js"></script>
+
 </body>
 
 </html>
