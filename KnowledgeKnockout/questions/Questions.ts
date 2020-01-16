@@ -15,7 +15,9 @@ export class Questions {
     }
     public static async getRandomQuestion(topicId: number): Promise<Question> {
         try {
-            const result = (await MySQL.query('SELECT * FROM question WHERE topicId=? ORDER BY RAND() LIMIT 1', [topicId]))[0];
+            let result = await MySQL.query('SELECT * FROM question WHERE topicId=? ORDER BY RAND() LIMIT 1', [topicId]);
+            console.log(result, topicId);
+            result = result[0];
             return new Question(result.id, result.blockId, result.topicId, result.content, result.imgSrc, result.secondsToSolve);
         }
         catch (error) {

@@ -1,5 +1,5 @@
-﻿import { readFile } from "fs";
-import { promisify } from "util";
+﻿import { readFile } from 'fs';
+import { promisify } from 'util';
 
 export async function render(paths: string[], params: any) {
     let ret = '';

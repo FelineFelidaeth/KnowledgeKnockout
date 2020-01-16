@@ -7,3 +7,13 @@ export const randomizeArray = <T>(arr: T[]): T[] => {
     }
     return newArray;
 };
+export const asyncTimeout = (ms: number): Promise<void> => new Promise(resolve => setTimeout(resolve, ms));
+export const asyncTimeoutWithCondition = (ms: number, conditions: { reference: any, propertyName: string, value: any }[], checkInterval: number = 100): Promise<void> => new Promise(resolve => {
+    const timeout = setTimeout(resolve, ms);
+    setInterval(() => {
+        if (conditions.every(c => c.reference[c.propertyName] === c.value)) {
+            clearTimeout(timeout);
+            resolve();
+        }
+    }, checkInterval);
+});

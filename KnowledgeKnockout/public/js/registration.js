@@ -2,7 +2,6 @@ const name = document.getElementById('name');
 const password = document.getElementById('password');
 const email = document.getElementById('email');
 const submitBtn = document.getElementById('submit');
-const bcrypt = window.dcodeIO.bcrypt;
 
 submitBtn.onclick = async e => {
     e.preventDefault();
@@ -11,7 +10,7 @@ submitBtn.onclick = async e => {
 
     let data = {
         name: name.value,
-        password: bcrypt.hashSync(password.value),
+        password: password.value,
         email: email.value
     };
 
@@ -39,7 +38,9 @@ submitBtn.onclick = async e => {
             body: JSON.stringify(data)
         });
 
-        alert(await res.json());
+        const loggedin = await res.json();
+
+        if (loggedin) location = '/mainpage';
 
     } catch (error) {
         alert(`Ein Fehler ist aufgetreten: ${error}`);

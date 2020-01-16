@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>#{title}</title>
+    <style>
+        body {
+            background-image: linear-gradient(to bottom right, darkgrey, silver, lightgrey);
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 93.5vh;
+        }
+
+        h1 {
+            color: white;
+            text-shadow: 1px 0 black, 0 5px darkslategray, 6px 0 grey, 0 -3px black;
+            text-align: center;
+            font-size: 80px;
+            margin-bottom: -70px;
+            text-decoration: underline;
+        }
+
+        button {
+            border-radius: 20px;
+            border: 2px solid black;
+            color: white;
+            text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 48px;
+            margin: 12px 12px;
+            cursor: pointer;
+            height: 95%;
+        }
+
+        .divUser {
+            border: 2px solid black;
+            color: snow;
+            float: left;
+            width: 20%;
+            height: 6%;
+            text-align: center;
+            font-size: 30px;
+            margin-bottom: -10%;
+            padding-top: 23px;
+            background-image: linear-gradient(to bottom left, darkblue, blue, DeepskyBlue);
+        }
+
+        .button1 {
+            background-image: linear-gradient(to bottom left, darkred, red, coral);
+            width: 100%;
+        }
+
+        .button2 {
+            background-image: linear-gradient(to bottom left, darkgreen, green, lightgreen);
+            width: 100%;
+            margin-right: 30px;
+        }
+
+        .space {
+            width: 5vw;
+        }
+
+        .button3 {
+            background-image: linear-gradient(to bottom left, chocolate, orange, gold);
+            width: 100%;
+            margin-left: 9px;
+        }
+
+        table {
+            margin: auto;
+            margin-top: 12%;
+            margin-left: 8%;
+            text-align: center;
+            width: 80%;
+            height: 50%;
+        }
+
+        td {
+            padding: 1px;
+        }
+    </style>
+</head>
+<body>
+    <div class="divUser">#{userName}</div>
+    <h1> KNOWLEDGE KNOCKOUT</h1>
+    <table>
+        <tr>
+            <td colspan="3"><button id="toggleSearchingMatch" class="button button1" href="/kampf">Kampf</button></td>
+        </tr>
+        <tr>
+            <td><button class="button button2" href="/training">Übung</button></td>
+            <td id="space"> </td>
+            <td><button class="button button3" href="/monster">Monster</button></td>
+
+        </tr>
+    </table>
+
+    <script>
+        const button = document.getElementById('toggleSearchingMatch');
+        let isSearchingMatch = false;
+        fetch('/match', {
+            method: 'post',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ isSearchingMatch })
+        })
+            .then(r => r.json())
+            .then(o => isSearchingMatch = o.isSearchingMatch);
+
+        button.addEventListener('click', async () => {
+            isSearchingMatch = !isSearchingMatch;
+            button.value = isSearchingMatch ? 'stop searching' : 'search match';
+
+            const response = await fetch('/match', {
+                method: 'post',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ isSearchingMatch })
+            });
+        });
+
+        setInterval(async () => {
+            const response = await fetch('/match', { method: 'post' });
+
+            const o = await response.json();
+            console.log(o);
+            if (o.isInMatch) {
+                window.location.href = '/match';
+            }
+        }, 1000);
+
+    </script>
+</body>
+</html>

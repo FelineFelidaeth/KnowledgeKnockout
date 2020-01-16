@@ -1,12 +1,11 @@
 import { Request, Response } from 'express';
-import * as path from 'path';
 import { MySQL } from '../mysql/MySql';
+import { render } from '../views/render';
 
-export function add_question_route_get(req: Request, res: Response): void {
-	console.log(path.resolve('./dist/views/add_question.html'));
-
-	res.sendFile(path.resolve('./dist/views/add_question.html'));
-	//res.send(req.body);
+export async function add_question_route_get(req: Request, res: Response): Promise<void> {
+	res.send(await render(['add_question'], {
+		title: 'add question'
+	}));
 }
 
 export async function add_question_route_post(req: Request, res: Response): Promise<void> {

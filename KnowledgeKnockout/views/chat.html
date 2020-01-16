@@ -1,0 +1,31 @@
+<div id="chat">
+
+    <div id="chat_chatout" style="width: 500px; height: 500px; overflow-y: scroll; overflow-wrap: break-word;"></div>
+    <input id="chat_chatin" type="text" />
+    <input id="chat_send" type="button" value="send" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+
+    <script type="module">
+        window.addEventListener('load', async () => {
+            if (!window.socket) window.socket = io('/');
+
+            const chatout = document.getElementById('chat_chatout');
+            const chatin = document.getElementById('chat_chatin');
+            const send = document.getElementById('chat_send');
+
+            socket.on('chatmessage', msg => {
+                const el = document.createElement('div');
+                el.innerHTML = `<div class="chatUser">${msg.user}</div><div class="chatMessage">${msg.msg}</div>`;
+                chatout.appendChild(el);
+                chatout.scrollTop = chatout.scrollHeight;
+            });
+
+            send.addEventListener('click', () => {
+                window.socket.emit('chatmessage', chatin.value);
+                chatin.value = '';
+            });
+        });
+    </script>
+
+</div>

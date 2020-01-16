@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> #{title} </title>
+    <style>
+        body {
+            background-image: linear-gradient(to bottom right, teal, paleTurquoise, darkcyan);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        div {
+            text-align: center;
+            width: 20%;
+            height: 53%;
+            background-image: linear-gradient(to bottom left, mediumturquoise, black, mediumturquoise);
+            border: 2px solid black;
+            margin: 0 auto;
+            margin-top: 10%;
+            border-radius: 15px;
+            font-size: 24px;
+            color: white;
+        }
+
+        input {
+            height: 25px;
+            width: 250px;
+        }
+
+        p {
+            margin-bottom: 5px;
+        }
+
+        .buttonSubmit {
+            color: white;
+            font-size: 23px;
+            text-align: center;
+            width: 55%;
+            height: 10%;
+            border-radius: 10px;
+            background-image: linear-gradient(to bottom left, lightblue, DarkCyan, lightblue);
+        }
+    </style>
+</head>
+<body>
+    <form id="loginUploadForm">
+        <div>
+            <h1>Registrieren</h1>
+
+            <label for="name">Benutzername: </label><br>
+            <input type="text" id="name" /><br><br>
+            <label for="email">E-Mail: </label><br>
+            <input type="email" id="email" /><br><br>
+            <label for="password">Passwort: </label><br>
+            <input type="password" id="password" />
+            <br><br><br>
+            <button type="button" id="submit" style="cursor: pointer">Registrieren</button>
+        </div>
+    </form>
+
+    <script src="js/registration.js"></script>
+</body>
+
+</html>
