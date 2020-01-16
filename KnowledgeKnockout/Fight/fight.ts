@@ -3,7 +3,6 @@ import { Questions } from '../questions/Questions';
 import { SocketConnection } from '../socket_connection/SocketConnection';
 import { User } from '../user/User';
 import { Player } from './Player';
-import { Authentication } from '../user/Authentication';
 
 export class Fight {
     public players: Player[] = [];

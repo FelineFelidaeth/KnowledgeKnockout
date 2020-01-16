@@ -20,14 +20,14 @@ export async function add_question_route_post(req: Request, res: Response): Prom
 	let lastQuestionId: number = 0;
 
 	try {
-		const sql: string = 'insert into question (content, blockId, topicId, secondsToAnswer) values (?, ?, ?, ?)';
+		const sql: string = 'insert into question (content, blockId, topicId, secondsToSolve) values (?, ?, ?, ?)';
 		const inserts: string[] = [questionContent, topicBlockId, topicId, secondsToAnswer];
 		//const results = await MySQL.query(sql, inserts);
 		const results = await MySQL.queryWithTransaction(sql, inserts);
 		lastQuestionId = results.insertId;
 	}
 	catch (error) {
-		res.send(JSON.stringify({ success: false, error: error.code }));
+		res.send(JSON.stringify({ success: false, error: error }));
 		return;
 	}
 
@@ -39,6 +39,6 @@ export async function add_question_route_post(req: Request, res: Response): Prom
 		res.send(JSON.stringify({ success: true }));
 	}
 	catch (error) {
-		res.send(JSON.stringify({ success: false, error: error.code }));
+		res.send(JSON.stringify({ success: false, error: error }));
 	}
 }
