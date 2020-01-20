@@ -23,6 +23,7 @@ import { training_route_get, training_route_post } from './routes/training_route
 import { SocketConnection } from './socket_connection/SocketConnection';
 import { Authentication } from './user/Authentication';
 import { Users } from './user/Users';
+import { monster_route_get } from './routes/monster_route';
 
 
 const app = express();
@@ -71,6 +72,8 @@ app.get('/training', Authentication.loginCheck, training_route_get).post('/train
 app.get('/match', Authentication.loginCheck, match_route_get).post('/match', Authentication.loginCheck, match_route_post);
 
 app.post('/userinfo', Authentication.loginCheck, userinfo_route_post);
+
+app.get('/monster', Authentication.loginCheck, monster_route_get);
 
 app.get('*', any_route_get);
 

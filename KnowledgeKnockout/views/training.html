@@ -16,7 +16,28 @@
             background-size: cover;
         }
 
-        select{
+        .buttonBack {
+            border-radius: 20px;
+            border: 2px solid black;
+            color: white;
+            text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 23px;
+            cursor: pointer;
+            margin-left: auto;
+            margin-right: auto;
+            float: left;
+            width: 300%;
+            height: 10%;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin-top: -47vh;
+            background-image: linear-gradient(to bottom left, darkblue, blue, DeepskyBlue);
+        }
+
+        select {
             margin-top: -350px;
             margin-left: 40vw;
             width: 400px;
@@ -47,7 +68,7 @@
             height: 70px;
             font-size: 20px;
             position: fixed;
-            background-color: lightblue;        
+            background-color: lightblue;
         }
 
         fieldset {
@@ -76,11 +97,10 @@
             margin-top: 20px;
             font-size: 24px;
         }
-
-
     </style>
 </head>
 <body>
+    <a href="/mainpage"><button class="buttonBack">zurück</button></a>
     <select id="topic">
         <option value="1">HTML und CSS</option>
         <option value="2">JavaScript</option>
@@ -159,12 +179,16 @@
             document.getElementById('question').textContent = q.q;
             q0Label.textContent = q.answers[0][0];
             q0.value = q.answers[0][1];
+            q0.checked = false;
             q1Label.textContent = q.answers[1][0];
             q1.value = q.answers[1][1];
+            q1.checked = false;
             q2Label.textContent = q.answers[2][0];
             q2.value = q.answers[2][1];
+            q2.checked = false;
             q3Label.textContent = q.answers[3][0];
             q3.value = q.answers[3][1];
+            q3.checked = false;
             document.getElementById('questionContainer').style.display = 'block';
         });
 

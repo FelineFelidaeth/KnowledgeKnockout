@@ -32,6 +32,26 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="public\img\Arena.png" />
+    <Content Include="public\img\bg_test.png" />
+    <Content Include="public\img\EarthMole_left.gif" />
+    <Content Include="public\img\EarthMole_right.gif" />
+    <Content Include="public\img\FireLizard_left.gif" />
+    <Content Include="public\img\FireLizard_right.gif" />
+    <Content Include="public\img\FlightBird_left.gif" />
+    <Content Include="public\img\FlightBird_right.gif" />
+    <Content Include="public\img\LightUnicorn_left.gif" />
+    <Content Include="public\img\LightUnicorn_right.gif" />
+    <Content Include="public\img\MetalDog_left.gif" />
+    <Content Include="public\img\MetalDog_right.gif" />
+    <Content Include="public\img\PlantPanda_left.gif" />
+    <Content Include="public\img\PlantPanda_right.gif" />
+    <Content Include="public\img\PoisonSnake_left.gif" />
+    <Content Include="public\img\PoisonSnake_right.gif" />
+    <Content Include="public\img\ShadowFox_left.gif" />
+    <Content Include="public\img\ShadowFox_right.gif" />
+    <Content Include="public\img\WaterWhale_left.gif" />
+    <Content Include="public\img\WaterWhale_right.gif" />
     <Content Include="public\searchMatch.html">
       <SubType>Code</SubType>
     </Content>
@@ -50,15 +70,10 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="package.json" />
-    <Content Include="public\HMTL_CSS\css\loginStyle.css" />
-    <Content Include="public\HMTL_CSS\css\mainStyle.css" />
-    <Content Include="public\HMTL_CSS\css\quizStyle.css" />
-    <Content Include="public\HMTL_CSS\css\uebungStyle.css" />
     <Content Include="views\login.html" />
     <Content Include="views\mainpage.html" />
-    <Content Include="public\HMTL_CSS\html\quiz.html" />
+    <Content Include="views\monster.html" />
     <Content Include="views\registration.html" />
-    <Content Include="public\HMTL_CSS\html\uebung.html" />
     <Content Include="public\js\add_question.js">
       <SubType>Code</SubType>
     </Content>
@@ -82,9 +97,7 @@
   <ItemGroup>
     <Folder Include="Fight\" />
     <Folder Include="mysql\" />
-    <Folder Include="public\HMTL_CSS\" />
-    <Folder Include="public\HMTL_CSS\css\" />
-    <Folder Include="public\HMTL_CSS\html\" />
+    <Folder Include="public\img\" />
     <Folder Include="user\" />
     <Folder Include="public\js\" />
     <Folder Include="public\js\modules\" />
@@ -115,6 +128,9 @@
     </TypeScriptCompile>
     <TypeScriptCompile Include="routes\add_question_route.ts" />
     <TypeScriptCompile Include="routes\any_route.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Include="routes\monster_route.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Include="routes\userinfo_route.ts">

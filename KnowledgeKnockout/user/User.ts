@@ -48,8 +48,8 @@ export class User {
         return this._progress;
     }
 
-    public getAvatar(id: number): Avatar {
-        return <Avatar>this.avatars.find(avatar => avatar.id === id);
+    public getAvatar(topicID: number): Avatar {
+        return <Avatar>this.avatars.find(avatar => avatar.topicId === topicID);
     }
 
     public get avatarTotalLevel(): number {
